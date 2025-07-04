@@ -25,5 +25,3 @@
 #include "named.c"
 #include "dnssd_client.c"
 #include "se_discover.c"
-
-

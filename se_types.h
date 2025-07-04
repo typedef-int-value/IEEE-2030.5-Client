@@ -4,12 +4,12 @@
 #include <stdint.h>
 
 #define se_flags(x) (*(uint32_t *)x)
-#define se_exists(x, f) (se_flags (x) & SE_##f##_exists)
-#define se_clear(x, f) (se_flags (x) &= ~SE_##f##_exists)
-#define se_set(x, f) (se_flags (x) |= SE_##f##_exists)
-#define se_true(x, f) (se_flags (x) & SE_##f##_true)
-#define se_set_true(x, f) (se_flags (x) |= SE_##f##_true)
-#define se_set_false(x, f) (se_flags (x) &= ~SE_##f##_true)
+#define se_exists(x, f) (se_flags(x) & SE_##f##_exists)
+#define se_clear(x, f) (se_flags(x) &= ~SE_##f##_exists)
+#define se_set(x, f) (se_flags(x) |= SE_##f##_exists)
+#define se_true(x, f) (se_flags(x) & SE_##f##_true)
+#define se_set_true(x, f) (se_flags(x) |= SE_##f##_true)
+#define se_set_false(x, f) (se_flags(x) &= ~SE_##f##_true)
 
 // global flags
 #define SE_description_exists (1 << 0)
@@ -27,7 +27,8 @@ typedef SE_UInt8_t SE_UomType_t;
 typedef int8_t SE_Int8_t;
 typedef SE_Int8_t SE_PowerOfTenMultiplierType_t;
 
-typedef struct {
+typedef struct
+{
   SE_PowerOfTenMultiplierType_t multiplier;
   SE_UomType_t unit;
   SE_Int32_t value;
@@ -40,9 +41,10 @@ typedef SE_UInt8_t SE_AccumulationBehaviourType_t;
 #define SE_version_exists (1 << 2)
 #define SE_lFDI_exists (1 << 3)
 #define SE_TimeLink_exists (1 << 4)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_Resource_t;
 
 #define SE_uom_exists (1 << 5)
@@ -63,9 +65,10 @@ typedef struct {
 #define SE_calorificValue_exists (1 << 20)
 #define SE_accumulationBehaviour_exists (1 << 21)
 #define SE_kind_exists (1 << 22)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_AccumulationBehaviourType_t accumulationBehaviour;
   SE_UnitValueType_t calorificValue;
   SE_CommodityType_t commodity;
@@ -90,7 +93,8 @@ typedef SE_UInt8_t SE_TOUType_t;
 typedef int64_t SE_Int64_t;
 typedef SE_Int64_t SE_TimeType_t;
 
-typedef struct {
+typedef struct
+{
   SE_UInt32_t duration;
   SE_TimeType_t start;
 } SE_DateTimeInterval_t;
@@ -103,9 +107,10 @@ typedef SE_UInt8_t SE_ConsumptionBlockType_t;
 #define SE_timePeriod_exists (1 << 7)
 #define SE_qualityFlags_exists (1 << 8)
 #define SE_consumptionBlock_exists (1 << 9)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_ConsumptionBlockType_t consumptionBlock;
   SE_HexBinary16_t qualityFlags;
   SE_DateTimeInterval_t timePeriod;
@@ -120,9 +125,10 @@ typedef struct {
 // #define SE_qualityFlags_exists (1 << 8)
 // #define SE_consumptionBlock_exists (1 << 9)
 #define SE_localID_exists (1 << 10)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_ConsumptionBlockType_t consumptionBlock;
   SE_HexBinary16_t qualityFlags;
   SE_DateTimeInterval_t timePeriod;
@@ -140,9 +146,10 @@ typedef SE_HexBinary128_t SE_mRIDType_t;
 
 // #define SE_description_exists (1 << 0)
 // #define SE_version_exists (1 << 2)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -150,9 +157,10 @@ typedef struct {
 
 // #define SE_description_exists (1 << 0)
 // #define SE_version_exists (1 << 2)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -161,9 +169,10 @@ typedef struct {
 
 // #define SE_description_exists (1 << 0)
 // #define SE_version_exists (1 << 2)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -173,9 +182,10 @@ typedef struct {
 
 // #define SE_description_exists (1 << 0)
 // #define SE_version_exists (1 << 2)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -187,9 +197,10 @@ typedef struct {
 #define SE_Reading_exists (1 << 6)
 #define SE_nextUpdateTime_exists (1 << 7)
 #define SE_lastUpdateTime_exists (1 << 8)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -206,9 +217,10 @@ typedef SE_HexBinary16_t SE_RoleFlagsType_t;
 
 // #define SE_description_exists (1 << 0)
 // #define SE_version_exists (1 << 2)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -220,9 +232,10 @@ typedef struct {
 // #define SE_description_exists (1 << 0)
 // #define SE_version_exists (1 << 2)
 #define SE_postRate_exists (1 << 5)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -234,26 +247,29 @@ typedef struct {
   SE_UInt32_t postRate;
 } SE_MirrorUsagePoint_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
 } SE_List_t;
 
 #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   SE_UInt32_t pollRate;
   List *MirrorUsagePoint;
 } SE_MirrorUsagePointList_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *MirrorMeterReading;
@@ -263,7 +279,8 @@ typedef uint64_t SE_UInt64_t;
 typedef uint8_t SE_HexBinary48_t[6];
 
 #define SE_maxRetryDuration_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
   SE_UInt16_t maxRetryDuration;
   SE_UInt16_t reasonCode;
@@ -273,138 +290,160 @@ typedef uint8_t SE_HexBinary8_t;
 
 // #define SE_description_exists (1 << 0)
 #define SE_responseRequired_exists (1 << 5)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
-  char * replyTo;
+  char *href;
+  char *replyTo;
   SE_HexBinary8_t responseRequired;
 } SE_RespondableResource_t;
 
 // #define SE_description_exists (1 << 0)
 // #define SE_version_exists (1 << 2)
 // #define SE_responseRequired_exists (1 << 5)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
-  char * replyTo;
+  char *href;
+  char *replyTo;
   SE_HexBinary8_t responseRequired;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
 } SE_RespondableIdentifiedObject_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_Link_t;
 
 #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_ListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_NotificationListLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_MeterReadingLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_EndDeviceLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_DeviceCapabilityLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_DERProgramLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_DERLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_CustomerAccountLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_ActiveFlowReservationListLink_t;
 
-typedef struct {
+typedef struct
+{
   SE_PowerOfTenMultiplierType_t multiplier;
   SE_UInt16_t value;
 } SE_UnsignedFixedPointType_t;
 
 typedef int16_t SE_Int16_t;
 
-typedef struct {
+typedef struct
+{
   SE_PowerOfTenMultiplierType_t multiplier;
   SE_Int16_t value;
 } SE_FixedPointType_t;
 
-typedef struct {
+typedef struct
+{
   SE_TimeType_t dateTime;
   SE_UInt8_t value;
 } SE_StorageModeStatusType_t;
 
 typedef SE_UInt16_t SE_PerCent_t;
 
-typedef struct {
+typedef struct
+{
   SE_TimeType_t dateTime;
   SE_PerCent_t value;
 } SE_StateOfChargeStatusType_t;
 
-typedef struct {
+typedef struct
+{
   SE_TimeType_t dateTime;
   SE_UInt8_t value;
 } SE_OperationalModeStatusType_t;
 
 typedef char SE_String6_t[6];
 
-typedef struct {
+typedef struct
+{
   SE_TimeType_t dateTime;
   SE_String6_t value;
 } SE_ManufacturerStatusType_t;
 
-typedef struct {
+typedef struct
+{
   SE_TimeType_t dateTime;
   SE_UInt8_t value;
 } SE_LocalControlModeStatusType_t;
 
-typedef struct {
+typedef struct
+{
   SE_TimeType_t dateTime;
   SE_UInt8_t value;
 } SE_InverterStatusType_t;
 
-typedef struct {
+typedef struct
+{
   SE_TimeType_t dateTime;
   SE_HexBinary8_t value;
 } SE_ConnectStatusType_t;
 
 // #define SE_description_exists (1 << 0)
 // #define SE_subscribable_exists (1 << 1)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
 } SE_SubscribableResource_t;
 
@@ -417,9 +456,10 @@ typedef struct {
 #define SE_localControlModeStatus_exists (1 << 10)
 #define SE_inverterStatus_exists (1 << 11)
 #define SE_genConnectStatus_exists (1 << 12)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_ConnectStatusType_t genConnectStatus;
   SE_InverterStatusType_t inverterStatus;
@@ -435,37 +475,42 @@ typedef struct {
 typedef SE_UInt8_t SE_PrimacyType_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_DERCurveListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_DERControlListLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_DefaultDERControlLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_ActiveDERControlListLink_t;
 
 // #define SE_description_exists (1 << 0)
 // #define SE_subscribable_exists (1 << 1)
 // #define SE_version_exists (1 << 2)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_mRIDType_t mRID;
   SE_String32_t description;
@@ -479,9 +524,10 @@ typedef struct {
 #define SE_DERControlListLink_exists (1 << 6)
 #define SE_DefaultDERControlLink_exists (1 << 7)
 #define SE_ActiveDERControlListLink_exists (1 << 8)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_mRIDType_t mRID;
   SE_String32_t description;
@@ -494,9 +540,10 @@ typedef struct {
 } SE_DERProgram_t;
 
 // #define SE_subscribable_exists (1 << 1)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -504,9 +551,10 @@ typedef struct {
 
 // #define SE_subscribable_exists (1 << 1)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -517,7 +565,8 @@ typedef struct {
 typedef SE_UInt8_t SE_DERUnitRefType_t;
 typedef SE_UInt8_t SE_DERCurveType_t;
 
-typedef struct {
+typedef struct
+{
   SE_Int32_t xvalue;
   SE_Int32_t yvalue;
 } SE_CurveData_t;
@@ -528,11 +577,12 @@ typedef struct {
 #define SE_rampIncTms_exists (1 << 6)
 #define SE_rampDecTms_exists (1 << 7)
 #define SE_openLoopTms_exists (1 << 8)
-#define SE_CurveData_count(x) (((se_flags (x) >> 9) & 0xf) + 1)
-#define SE_set_CurveData_count(x, n) (se_flags(x) |= (((n) - 1) & 0xf) << 9)
-typedef struct {
+#define SE_CurveData_count(x) (((se_flags(x) >> 9) & 0xf) + 1)
+#define SE_set_CurveData_count(x, n) (se_flags(x) |= (((n)-1) & 0xf) << 9)
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -548,30 +598,35 @@ typedef struct {
   SE_DERUnitRefType_t yRefType;
 } SE_DERCurve_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *DERCurve;
 } SE_DERCurveList_t;
 
-typedef struct {
+typedef struct
+{
   SE_PowerOfTenMultiplierType_t multiplier;
   SE_Int16_t value;
 } SE_ActivePower_t;
 
-typedef struct {
+typedef struct
+{
   SE_PowerOfTenMultiplierType_t multiplier;
   SE_Int16_t value;
 } SE_ReactivePower_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_DERCurveLink_t;
 
-typedef struct {
+typedef struct
+{
   SE_UInt32_t dBOF;
   SE_UInt32_t dBUF;
   SE_UInt16_t kOF;
@@ -581,12 +636,14 @@ typedef struct {
 
 typedef SE_Int16_t SE_SignedPerCent_t;
 
-typedef struct {
+typedef struct
+{
   SE_DERUnitRefType_t refType;
   SE_SignedPerCent_t value;
 } SE_FixedVar_t;
 
-typedef struct {
+typedef struct
+{
   SE_Int16_t displacement;
   SE_PowerOfTenMultiplierType_t multiplier;
 } SE_PowerFactor_t;
@@ -614,7 +671,8 @@ typedef struct {
 #define SE_opModEnergize_exists (1 << 20)
 #define SE_opModConnect_true (1 << 21)
 #define SE_opModConnect_exists (1 << 22)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
   SE_PowerFactor_t opModFixedPF;
   SE_FixedVar_t opModFixedVar;
@@ -643,7 +701,8 @@ typedef char SE_String192_t[192];
 #define SE_reason_exists (1 << 0)
 #define SE_potentiallySupersededTime_exists (1 << 1)
 #define SE_potentiallySuperseded_true (1 << 2)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
   SE_UInt8_t currentStatus;
   SE_TimeType_t dateTime;
@@ -655,10 +714,11 @@ typedef struct {
 // #define SE_subscribable_exists (1 << 1)
 // #define SE_version_exists (1 << 2)
 // #define SE_responseRequired_exists (1 << 5)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
-  char * replyTo;
+  char *href;
+  char *replyTo;
   SE_HexBinary8_t responseRequired;
   SE_SubscribableType_t subscribable;
   SE_mRIDType_t mRID;
@@ -670,10 +730,11 @@ typedef struct {
 // #define SE_subscribable_exists (1 << 1)
 // #define SE_version_exists (1 << 2)
 // #define SE_responseRequired_exists (1 << 5)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
-  char * replyTo;
+  char *href;
+  char *replyTo;
   SE_HexBinary8_t responseRequired;
   SE_SubscribableType_t subscribable;
   SE_mRIDType_t mRID;
@@ -690,10 +751,11 @@ typedef struct {
 // #define SE_responseRequired_exists (1 << 5)
 #define SE_randomizeStart_exists (1 << 6)
 #define SE_randomizeDuration_exists (1 << 7)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
-  char * replyTo;
+  char *href;
+  char *replyTo;
   SE_HexBinary8_t responseRequired;
   SE_SubscribableType_t subscribable;
   SE_mRIDType_t mRID;
@@ -712,10 +774,11 @@ typedef struct {
 // #define SE_responseRequired_exists (1 << 5)
 // #define SE_randomizeStart_exists (1 << 6)
 // #define SE_randomizeDuration_exists (1 << 7)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
-  char * replyTo;
+  char *href;
+  char *replyTo;
   SE_HexBinary8_t responseRequired;
   SE_SubscribableType_t subscribable;
   SE_mRIDType_t mRID;
@@ -730,9 +793,10 @@ typedef struct {
 } SE_DERControl_t;
 
 // #define SE_subscribable_exists (1 << 1)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -741,22 +805,26 @@ typedef struct {
 
 typedef SE_UInt8_t SE_DERType_t;
 
-typedef struct {
+typedef struct
+{
   SE_PowerOfTenMultiplierType_t multiplier;
   SE_UInt16_t value;
 } SE_WattHour_t;
 
-typedef struct {
+typedef struct
+{
   SE_PowerOfTenMultiplierType_t multiplier;
   SE_UInt16_t value;
 } SE_ApparentPower_t;
 
-typedef struct {
+typedef struct
+{
   SE_PowerOfTenMultiplierType_t multiplier;
   SE_UInt16_t value;
 } SE_AmpereHour_t;
 
-typedef struct {
+typedef struct
+{
   SE_PowerOfTenMultiplierType_t multiplier;
   SE_UInt16_t value;
 } SE_CurrentRMS_t;
@@ -781,9 +849,10 @@ typedef SE_HexBinary32_t SE_DERControlType_t;
 #define SE_rtgMaxChargeRateVA_exists (1 << 19)
 #define SE_rtgAh_exists (1 << 20)
 #define SE_rtgAbnormalCategory_exists (1 << 21)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_DERControlType_t modesSupported;
   SE_CurrentRMS_t rtgA;
   SE_UInt8_t rtgAbnormalCategory;
@@ -814,9 +883,10 @@ typedef struct {
 #define SE_reserveChargePercent_exists (1 << 8)
 #define SE_maxChargeDuration_exists (1 << 9)
 #define SE_availabilityDuration_exists (1 << 10)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt32_t availabilityDuration;
   SE_UInt32_t maxChargeDuration;
@@ -827,7 +897,8 @@ typedef struct {
   SE_ActivePower_t statWAvail;
 } SE_DERAvailability_t;
 
-typedef struct {
+typedef struct
+{
   SE_PowerOfTenMultiplierType_t multiplier;
   SE_UInt16_t value;
 } SE_VoltageRMS_t;
@@ -855,9 +926,10 @@ typedef struct {
 #define SE_setESLowVolt_exists (1 << 24)
 #define SE_setESRandomDelay_exists (1 << 25)
 #define SE_setSoftGradW_exists (1 << 26)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_DERControlType_t modesEnabled;
   SE_UInt16_t setESDelay;
@@ -886,40 +958,47 @@ typedef struct {
   SE_TimeType_t updatedTime;
 } SE_DERSettings_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_DERStatusLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_DERSettingsLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_DERCapabilityLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_DERAvailabilityLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_CurrentDERProgramLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_AssociatedUsagePointLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_AssociatedDERProgramListLink_t;
 
@@ -931,9 +1010,10 @@ typedef struct {
 #define SE_CurrentDERProgramLink_exists (1 << 9)
 #define SE_AssociatedUsagePointLink_exists (1 << 10)
 #define SE_AssociatedDERProgramListLink_exists (1 << 11)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_AssociatedDERProgramListLink_t AssociatedDERProgramListLink;
   SE_AssociatedUsagePointLink_t AssociatedUsagePointLink;
@@ -945,9 +1025,10 @@ typedef struct {
 } SE_DER_t;
 
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   SE_UInt32_t pollRate;
@@ -965,9 +1046,10 @@ typedef struct {
 // #define SE_setESLowVolt_exists (1 << 24)
 // #define SE_setESRandomDelay_exists (1 << 25)
 // #define SE_setSoftGradW_exists (1 << 26)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_mRIDType_t mRID;
   SE_String32_t description;
@@ -983,7 +1065,8 @@ typedef struct {
   SE_UInt16_t setSoftGradW;
 } SE_DefaultDERControl_t;
 
-typedef struct {
+typedef struct
+{
   SE_PowerOfTenMultiplierType_t multiplier;
   SE_Int48_t value;
 } SE_SignedRealEnergy_t;
@@ -992,10 +1075,11 @@ typedef struct {
 // #define SE_subscribable_exists (1 << 1)
 // #define SE_version_exists (1 << 2)
 // #define SE_responseRequired_exists (1 << 5)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
-  char * replyTo;
+  char *href;
+  char *replyTo;
   SE_HexBinary8_t responseRequired;
   SE_SubscribableType_t subscribable;
   SE_mRIDType_t mRID;
@@ -1011,9 +1095,10 @@ typedef struct {
 
 // #define SE_subscribable_exists (1 << 1)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -1021,7 +1106,8 @@ typedef struct {
   List *FlowReservationResponse;
 } SE_FlowReservationResponseList_t;
 
-typedef struct {
+typedef struct
+{
   SE_TimeType_t dateTime;
   SE_UInt8_t requestStatus;
 } SE_RequestStatus_t;
@@ -1029,9 +1115,10 @@ typedef struct {
 // #define SE_description_exists (1 << 0)
 // #define SE_version_exists (1 << 2)
 #define SE_durationRequested_exists (1 << 5)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -1044,9 +1131,10 @@ typedef struct {
 } SE_FlowReservationRequest_t;
 
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   SE_UInt32_t pollRate;
@@ -1054,16 +1142,18 @@ typedef struct {
 } SE_FlowReservationRequestList_t;
 
 // #define SE_description_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_String32_t description;
   SE_DateTimeInterval_t interval;
 } SE_SupplyInterruptionOverride_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *SupplyInterruptionOverride;
@@ -1071,14 +1161,16 @@ typedef struct {
 
 typedef SE_UInt8_t SE_ServiceStatusType_t;
 
-typedef struct {
+typedef struct
+{
   SE_ServiceStatusType_t newStatus;
   SE_TimeType_t startTime;
 } SE_ServiceChange_t;
 
 typedef SE_UInt8_t SE_CreditTypeType_t;
 
-typedef struct {
+typedef struct
+{
   SE_CreditTypeType_t newType;
   SE_TimeType_t startTime;
 } SE_CreditTypeChange_t;
@@ -1086,24 +1178,27 @@ typedef struct {
 #define SE_serviceChange_exists (1 << 5)
 #define SE_creditTypeInUse_exists (1 << 6)
 #define SE_creditTypeChange_exists (1 << 7)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_CreditTypeChange_t creditTypeChange;
   SE_CreditTypeType_t creditTypeInUse;
   SE_ServiceChange_t serviceChange;
   SE_ServiceStatusType_t serviceStatus;
 } SE_PrepayOperationStatus_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_UsagePointLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_MeterReadingListLink_t;
 
@@ -1111,9 +1206,10 @@ typedef struct {
 // #define SE_version_exists (1 << 2)
 #define SE_MeterReadingListLink_exists (1 << 5)
 #define SE_deviceLFDI_exists (1 << 6)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -1125,35 +1221,40 @@ typedef struct {
 } SE_UsagePoint_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_SupplyInterruptionOverrideListLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_PrepayOperationStatusLink_t;
 
 typedef SE_UInt8_t SE_PrepayModeType_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_CreditRegisterListLink_t;
 
 typedef SE_UInt16_t SE_CurrencyCode_t;
 
-typedef struct {
+typedef struct
+{
   SE_PowerOfTenMultiplierType_t multiplier;
   SE_UInt48_t value;
 } SE_RealEnergy_t;
 
 #define SE_energyUnit_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
   SE_RealEnergy_t energyUnit;
   SE_CurrencyCode_t monetaryUnit;
@@ -1162,22 +1263,25 @@ typedef struct {
 } SE_AccountingUnit_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_ActiveSupplyInterruptionOverrideListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_ActiveCreditRegisterListLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_AccountBalanceLink_t;
 
 // #define SE_description_exists (1 << 0)
@@ -1188,9 +1292,10 @@ typedef struct {
 #define SE_ActiveSupplyInterruptionOverrideListLink_exists (1 << 8)
 #define SE_ActiveCreditRegisterListLink_exists (1 << 9)
 #define SE_UsagePointLink_exists (1 << 16)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -1210,9 +1315,10 @@ typedef struct {
 
 // #define SE_subscribable_exists (1 << 1)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -1223,9 +1329,10 @@ typedef struct {
 // #define SE_description_exists (1 << 0)
 // #define SE_version_exists (1 << 2)
 #define SE_creditType_exists (1 << 5)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -1235,9 +1342,10 @@ typedef struct {
   SE_String32_t token;
 } SE_CreditRegister_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *CreditRegister;
@@ -1248,9 +1356,10 @@ typedef SE_UInt8_t SE_CreditStatusType_t;
 #define SE_emergencyCreditStatus_exists (1 << 5)
 #define SE_emergencyCredit_exists (1 << 6)
 #define SE_creditStatus_exists (1 << 7)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_AccountingUnit_t availableCredit;
   SE_CreditStatusType_t creditStatus;
   SE_AccountingUnit_t emergencyCredit;
@@ -1266,9 +1375,10 @@ typedef char SE_String20_t[20];
 #define SE_providerID_exists (1 << 6)
 #define SE_phone_exists (1 << 7)
 #define SE_email_exists (1 << 8)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -1278,23 +1388,26 @@ typedef struct {
   SE_String42_t web;
 } SE_ServiceSupplier_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *ServiceSupplier;
 } SE_ServiceSupplierList_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_ReadingTypeLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_BillingReadingSetListLink_t;
 
@@ -1302,9 +1415,10 @@ typedef struct {
 // #define SE_version_exists (1 << 2)
 #define SE_ReadingTypeLink_exists (1 << 5)
 #define SE_BillingReadingSetListLink_exists (1 << 6)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -1316,9 +1430,10 @@ typedef struct {
 // #define SE_version_exists (1 << 2)
 // #define SE_ReadingTypeLink_exists (1 << 5)
 // #define SE_BillingReadingSetListLink_exists (1 << 6)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -1326,9 +1441,10 @@ typedef struct {
   SE_ReadingTypeLink_t ReadingTypeLink;
 } SE_TargetReading_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *TargetReading;
@@ -1338,9 +1454,10 @@ typedef struct {
 // #define SE_version_exists (1 << 2)
 // #define SE_ReadingTypeLink_exists (1 << 5)
 // #define SE_BillingReadingSetListLink_exists (1 << 6)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -1348,9 +1465,10 @@ typedef struct {
   SE_ReadingTypeLink_t ReadingTypeLink;
 } SE_ProjectionReading_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *ProjectionReading;
@@ -1360,9 +1478,10 @@ typedef struct {
 // #define SE_version_exists (1 << 2)
 // #define SE_ReadingTypeLink_exists (1 << 5)
 // #define SE_BillingReadingSetListLink_exists (1 << 6)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -1370,70 +1489,80 @@ typedef struct {
   SE_ReadingTypeLink_t ReadingTypeLink;
 } SE_HistoricalReading_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *HistoricalReading;
 } SE_HistoricalReadingList_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_TariffProfileLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_TargetReadingListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_ProjectionReadingListLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_PrepaymentLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_HistoricalReadingListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_BillingPeriodListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_ActiveTargetReadingListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_ActiveProjectionReadingListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_ActiveBillingPeriodListLink_t;
 
@@ -1451,9 +1580,10 @@ typedef struct {
 #define SE_ActiveProjectionReadingListLink_exists (1 << 14)
 #define SE_ActiveBillingPeriodListLink_exists (1 << 15)
 // #define SE_UsagePointLink_exists (1 << 16)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -1472,24 +1602,27 @@ typedef struct {
 } SE_CustomerAgreement_t;
 
 // #define SE_subscribable_exists (1 << 1)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *CustomerAgreement;
 } SE_CustomerAgreementList_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_ServiceSupplierLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_CustomerAgreementListLink_t;
 
@@ -1499,9 +1632,10 @@ typedef struct {
 #define SE_customerName_exists (1 << 6)
 #define SE_CustomerAgreementListLink_exists (1 << 7)
 #define SE_customerAccount_exists (1 << 8)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -1515,9 +1649,10 @@ typedef struct {
 
 // #define SE_subscribable_exists (1 << 1)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -1526,18 +1661,20 @@ typedef struct {
 } SE_CustomerAccountList_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_BillingReadingListLink_t;
 
 // #define SE_description_exists (1 << 0)
 // #define SE_version_exists (1 << 2)
 #define SE_BillingReadingListLink_exists (1 << 5)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -1546,9 +1683,10 @@ typedef struct {
 } SE_BillingReadingSet_t;
 
 // #define SE_subscribable_exists (1 << 1)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -1559,7 +1697,8 @@ typedef SE_UInt8_t SE_ChargeKind_t;
 
 // #define SE_description_exists (1 << 0)
 // #define SE_kind_exists (1 << 22)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
   SE_String20_t description;
   SE_ChargeKind_t kind;
@@ -1571,9 +1710,10 @@ typedef struct {
 // #define SE_timePeriod_exists (1 << 7)
 // #define SE_qualityFlags_exists (1 << 8)
 // #define SE_consumptionBlock_exists (1 << 9)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_ConsumptionBlockType_t consumptionBlock;
   SE_HexBinary16_t qualityFlags;
   SE_DateTimeInterval_t timePeriod;
@@ -1582,9 +1722,10 @@ typedef struct {
   List *Charge;
 } SE_BillingReading_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *BillingReading;
@@ -1593,9 +1734,10 @@ typedef struct {
 #define SE_statusTimeStamp_exists (1 << 5)
 #define SE_billToDate_exists (1 << 6)
 #define SE_billLastPeriod_exists (1 << 7)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_Int48_t billLastPeriod;
   SE_Int48_t billToDate;
   SE_DateTimeInterval_t interval;
@@ -1603,9 +1745,10 @@ typedef struct {
 } SE_BillingPeriod_t;
 
 // #define SE_subscribable_exists (1 << 1)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -1619,10 +1762,11 @@ typedef SE_UInt8_t SE_PriorityType_t;
 // #define SE_version_exists (1 << 2)
 // #define SE_responseRequired_exists (1 << 5)
 #define SE_originator_exists (1 << 6)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
-  char * replyTo;
+  char *href;
+  char *replyTo;
   SE_HexBinary8_t responseRequired;
   SE_SubscribableType_t subscribable;
   SE_mRIDType_t mRID;
@@ -1633,13 +1777,14 @@ typedef struct {
   SE_DateTimeInterval_t interval;
   SE_String20_t originator;
   SE_PriorityType_t priority;
-  char * textMessage;
+  char *textMessage;
 } SE_TextMessage_t;
 
 // #define SE_subscribable_exists (1 << 1)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -1647,18 +1792,20 @@ typedef struct {
 } SE_TextMessageList_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_TextMessageListLink_t;
 
 typedef SE_String42_t SE_LocaleType_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_ActiveTextMessageListLink_t;
 
@@ -1667,9 +1814,10 @@ typedef struct {
 // #define SE_version_exists (1 << 2)
 #define SE_TextMessageListLink_exists (1 << 5)
 #define SE_ActiveTextMessageListLink_exists (1 << 6)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_mRIDType_t mRID;
   SE_String32_t description;
@@ -1682,9 +1830,10 @@ typedef struct {
 
 // #define SE_subscribable_exists (1 << 1)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -1693,9 +1842,10 @@ typedef struct {
 } SE_MessagingProgramList_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_ConsumptionTariffIntervalListLink_t;
 
@@ -1706,10 +1856,11 @@ typedef struct {
 // #define SE_randomizeStart_exists (1 << 6)
 // #define SE_randomizeDuration_exists (1 << 7)
 #define SE_ConsumptionTariffIntervalListLink_exists (1 << 8)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
-  char * replyTo;
+  char *href;
+  char *replyTo;
   SE_HexBinary8_t responseRequired;
   SE_SubscribableType_t subscribable;
   SE_mRIDType_t mRID;
@@ -1725,9 +1876,10 @@ typedef struct {
 } SE_TimeTariffInterval_t;
 
 // #define SE_subscribable_exists (1 << 1)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -1735,9 +1887,10 @@ typedef struct {
 } SE_TimeTariffIntervalList_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_RateComponentListLink_t;
 
@@ -1747,9 +1900,10 @@ typedef struct {
 #define SE_pricePowerOfTenMultiplier_exists (1 << 6)
 #define SE_currency_exists (1 << 7)
 #define SE_RateComponentListLink_exists (1 << 8)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -1763,9 +1917,10 @@ typedef struct {
 
 // #define SE_subscribable_exists (1 << 1)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -1774,16 +1929,18 @@ typedef struct {
 } SE_TariffProfileList_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_TimeTariffIntervalListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_ActiveTimeTariffIntervalListLink_t;
 
@@ -1792,9 +1949,10 @@ typedef struct {
 #define SE_flowRateStartLimit_exists (1 << 5)
 #define SE_flowRateEndLimit_exists (1 << 6)
 #define SE_ActiveTimeTariffIntervalListLink_exists (1 << 7)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -1806,9 +1964,10 @@ typedef struct {
   SE_TimeTariffIntervalListLink_t TimeTariffIntervalListLink;
 } SE_RateComponent_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *RateComponent;
@@ -1816,7 +1975,8 @@ typedef struct {
 
 typedef SE_UInt8_t SE_CostKindType_t;
 
-typedef struct {
+typedef struct
+{
   SE_UInt32_t amount;
   SE_CostKindType_t costKind;
   SE_UInt8_t costLevel;
@@ -1824,18 +1984,20 @@ typedef struct {
 } SE_EnvironmentalCost_t;
 
 #define SE_price_exists (1 << 5)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_ConsumptionBlockType_t consumptionBlock;
   List *EnvironmentalCost;
   SE_Int32_t price;
   SE_UInt48_t startValue;
 } SE_ConsumptionTariffInterval_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *ConsumptionTariffInterval;
@@ -1843,9 +2005,10 @@ typedef struct {
 
 // #define SE_subscribable_exists (1 << 1)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -1854,18 +2017,20 @@ typedef struct {
 } SE_UsagePointList_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_ReadingListLink_t;
 
 // #define SE_description_exists (1 << 0)
 // #define SE_version_exists (1 << 2)
 #define SE_ReadingListLink_exists (1 << 5)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -1874,9 +2039,10 @@ typedef struct {
 } SE_ReadingSet_t;
 
 // #define SE_subscribable_exists (1 << 1)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -1884,9 +2050,10 @@ typedef struct {
 } SE_ReadingSetList_t;
 
 // #define SE_subscribable_exists (1 << 1)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -1894,15 +2061,17 @@ typedef struct {
 } SE_ReadingList_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_ReadingSetListLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_ReadingLink_t;
 
 // #define SE_description_exists (1 << 0)
@@ -1910,9 +2079,10 @@ typedef struct {
 #define SE_ReadingSetListLink_exists (1 << 5)
 #define SE_ReadingLink_exists (1 << 6)
 // #define SE_RateComponentListLink_exists (1 << 8)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -1923,9 +2093,10 @@ typedef struct {
 } SE_MeterReading_t;
 
 // #define SE_subscribable_exists (1 << 1)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -1934,14 +2105,16 @@ typedef struct {
 
 typedef SE_UInt8_t SE_UnitType_t;
 
-typedef struct {
+typedef struct
+{
   SE_UnitType_t type;
   SE_UInt16_t value;
 } SE_TargetReduction_t;
 
 #define SE_heatingSetpoint_exists (1 << 0)
 #define SE_coolingSetpoint_exists (1 << 1)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
   SE_Int16_t coolingSetpoint;
   SE_Int16_t heatingSetpoint;
@@ -1950,21 +2123,24 @@ typedef struct {
 #define SE_loadAdjustmentPercentageOffset_exists (1 << 0)
 #define SE_heatingOffset_exists (1 << 1)
 #define SE_coolingOffset_exists (1 << 2)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
   SE_UInt8_t coolingOffset;
   SE_UInt8_t heatingOffset;
   SE_PerCent_t loadAdjustmentPercentageOffset;
 } SE_Offset_t;
 
-typedef struct {
+typedef struct
+{
   SE_UInt8_t normalValue;
 } SE_DutyCycle_t;
 
 typedef SE_HexBinary32_t SE_DeviceCategoryType_t;
 typedef SE_UInt8_t SE_ApplianceLoadReductionType_t;
 
-typedef struct {
+typedef struct
+{
   SE_ApplianceLoadReductionType_t type;
 } SE_ApplianceLoadReduction_t;
 
@@ -1982,10 +2158,11 @@ typedef struct {
 #define SE_Offset_exists (1 << 13)
 #define SE_overrideDuration_exists (1 << 14)
 #define SE_SetPoint_exists (1 << 15)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
-  char * replyTo;
+  char *href;
+  char *replyTo;
   SE_HexBinary8_t responseRequired;
   SE_SubscribableType_t subscribable;
   SE_mRIDType_t mRID;
@@ -2006,9 +2183,10 @@ typedef struct {
 } SE_EndDeviceControl_t;
 
 // #define SE_subscribable_exists (1 << 1)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -2016,16 +2194,18 @@ typedef struct {
 } SE_EndDeviceControlList_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_EndDeviceControlListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_ActiveEndDeviceControlListLink_t;
 
@@ -2035,9 +2215,10 @@ typedef struct {
 #define SE_availabilityUpdatePowerChangeThreshold_exists (1 << 6)
 #define SE_availabilityUpdatePercentChangeThreshold_exists (1 << 7)
 #define SE_ActiveEndDeviceControlListLink_exists (1 << 8)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -2050,9 +2231,10 @@ typedef struct {
 
 // #define SE_subscribable_exists (1 << 1)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -2060,18 +2242,20 @@ typedef struct {
   List *DemandResponseProgram;
 } SE_DemandResponseProgramList_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_DemandResponseProgramLink_t;
 
 #define SE_sheddablePower_exists (1 << 5)
 #define SE_sheddablePercent_exists (1 << 6)
 #define SE_DemandResponseProgramLink_exists (1 << 7)
 // #define SE_availabilityDuration_exists (1 << 10)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt32_t availabilityDuration;
   SE_DemandResponseProgramLink_t DemandResponseProgramLink;
   SE_PerCent_t sheddablePercent;
@@ -2079,25 +2263,28 @@ typedef struct {
 } SE_LoadShedAvailability_t;
 
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   SE_UInt32_t pollRate;
   List *LoadShedAvailability;
 } SE_LoadShedAvailabilityList_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_FileLink_t;
 
 #define SE_FileLink_exists (1 << 5)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt32_t pollRate;
   SE_TimeType_t activateTime;
   SE_FileLink_t FileLink;
@@ -2116,11 +2303,12 @@ typedef SE_UInt32_t SE_PENType_t;
 #define SE_mfSerNum_exists (1 << 5)
 #define SE_mfHwVer_exists (1 << 6)
 #define SE_activateTime_exists (1 << 7)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_TimeType_t activateTime;
-  char * fileURI;
+  char *fileURI;
   SE_HexBinary160_t lFDI;
   SE_String32_t mfHwVer;
   SE_PENType_t mfID;
@@ -2132,31 +2320,35 @@ typedef struct {
 } SE_File_t;
 
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   SE_UInt32_t pollRate;
   List *File;
 } SE_FileList_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_RateComponentLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_Int32_t consumeThreshold;
   SE_Int32_t maxReductionThreshold;
   SE_RateComponentLink_t RateComponentLink;
 } SE_PriceResponseCfg_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *PriceResponseCfg;
@@ -2165,7 +2357,8 @@ typedef struct {
 typedef SE_Int32_t SE_TimeOffsetType_t;
 typedef SE_HexBinary32_t SE_DstRuleType_t;
 
-typedef struct {
+typedef struct
+{
   SE_DstRuleType_t dstEndRule;
   SE_TimeOffsetType_t dstOffset;
   SE_DstRuleType_t dstStartRule;
@@ -2173,15 +2366,17 @@ typedef struct {
 } SE_TimeConfiguration_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_PriceResponseCfgListLink_t;
 
 #define SE_lowChargeThreshold_exists (1 << 0)
 #define SE_batteryInstallTime_exists (1 << 1)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
   SE_TimeType_t batteryInstallTime;
   SE_UInt32_t lowChargeThreshold;
@@ -2192,9 +2387,10 @@ typedef struct {
 #define SE_PriceResponseCfgListLink_exists (1 << 6)
 #define SE_PowerConfiguration_exists (1 << 7)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt32_t pollRate;
   SE_LocaleType_t currentLocale;
@@ -2206,9 +2402,10 @@ typedef struct {
 
 #define SE_extendedData_exists (1 << 5)
 #define SE_details_exists (1 << 6)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_TimeType_t createdDateTime;
   SE_String32_t details;
   SE_UInt32_t extendedData;
@@ -2221,9 +2418,10 @@ typedef struct {
 
 // #define SE_subscribable_exists (1 << 1)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -2231,34 +2429,38 @@ typedef struct {
   List *LogEvent;
 } SE_LogEventList_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_HexBinary128_t DestAddress;
   SE_HexBinary128_t SourceRoute;
 } SE_RPLSourceRoutes_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *RPLSourceRoutes;
 } SE_RPLSourceRoutesList_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_RPLSourceRoutesListLink_t;
 
 #define SE_RPLSourceRoutesListLink_exists (1 << 5)
 #define SE_groundedFlag_true (1 << 6)
 #define SE_DODAGroot_true (1 << 7)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt8_t DODAGid;
   SE_UInt8_t flags;
   SE_UInt8_t MOP;
@@ -2269,25 +2471,28 @@ typedef struct {
   SE_UInt8_t versionNumber;
 } SE_RPLInstance_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *RPLInstance;
 } SE_RPLInstanceList_t;
 
 #define SE_isChild_true (1 << 5)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt8_t linkQuality;
   SE_UInt16_t shortAddress;
 } SE_Neighbor_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *Neighbor;
@@ -2295,7 +2500,8 @@ typedef struct {
 
 #define SE_octetsTx_exists (1 << 0)
 #define SE_octetsRx_exists (1 << 1)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
   SE_UInt32_t octetsRx;
   SE_UInt32_t octetsTx;
@@ -2305,14 +2511,16 @@ typedef struct {
 } SE_loWPAN_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_NeighborListLink_t;
 
 #define SE_NeighborListLink_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
   SE_HexBinary8_t capabilityInfo;
   SE_NeighborListLink_t NeighborListLink;
@@ -2334,9 +2542,10 @@ typedef uint8_t SE_HexBinary64_t[8];
 #define SE_LLCSMAFail_exists (1 << 15)
 #define SE_LLAckNotRx_exists (1 << 16)
 #define SE_IEEE_802_15_4_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt32_t CRCerrors;
   SE_HexBinary64_t EUI64;
   SE_IEEE_802_15_4_t IEEE_802_15_4;
@@ -2355,25 +2564,28 @@ typedef struct {
   SE_loWPAN_t loWPAN;
 } SE_LLInterface_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *LLInterface;
 } SE_LLInterfaceList_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_LLInterfaceListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_IPAddrListLink_t;
 
@@ -2404,9 +2616,10 @@ typedef struct {
 #define SE_ifInBroadcastPkts_exists (1 << 29)
 #define SE_ifHighSpeed_exists (1 << 30)
 #define SE_ifDescr_exists (1 << 31)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_String192_t ifDescr;
   SE_UInt32_t ifHighSpeed;
   SE_UInt32_t ifInBroadcastPkts;
@@ -2435,9 +2648,10 @@ typedef struct {
 } SE_IPInterface_t;
 
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   SE_UInt32_t pollRate;
@@ -2445,29 +2659,33 @@ typedef struct {
 } SE_IPInterfaceList_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_RPLInstanceListLink_t;
 
 #define SE_RPLInstanceListLink_exists (1 << 5)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_HexBinary128_t address;
   SE_RPLInstanceListLink_t RPLInstanceListLink;
 } SE_IPAddr_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *IPAddr;
 } SE_IPAddrList_t;
 
-typedef struct {
+typedef struct
+{
   SE_ActivePower_t chargingPowerNow;
   SE_RealEnergy_t energyRequestNow;
   SE_ActivePower_t maxForwardPower;
@@ -2485,9 +2703,10 @@ typedef SE_UInt8_t SE_PowerSourceType_t;
 #define SE_estimatedTimeRemaining_exists (1 << 8)
 #define SE_estimatedChargeRemaining_exists (1 << 9)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt32_t pollRate;
   SE_UInt8_t batteryStatus;
   SE_TimeType_t changedTime;
@@ -2499,28 +2718,32 @@ typedef struct {
   SE_UInt32_t totalTimeOnBattery;
 } SE_PowerStatus_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_LocaleType_t locale;
 } SE_SupportedLocale_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *SupportedLocale;
 } SE_SupportedLocaleList_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_SupportedLocaleListLink_t;
 
-typedef struct {
+typedef struct
+{
   SE_RealEnergy_t averageEnergy;
   SE_ActivePower_t maxDemand;
   SE_HexBinary32_t optionsImplemented;
@@ -2531,9 +2754,10 @@ typedef struct {
 #define SE_functionsImplemented_exists (1 << 7)
 #define SE_DRLCCapabilities_exists (1 << 8)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt32_t pollRate;
   SE_DRLCCapabilities_t DRLCCapabilities;
   SE_HexBinary64_t functionsImplemented;
@@ -2553,9 +2777,10 @@ typedef struct {
 
 #define SE_localTime_exists (1 << 5)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt32_t pollRate;
   SE_TimeType_t currentTime;
   SE_TimeType_t dstEndTime;
@@ -2568,9 +2793,10 @@ typedef struct {
 
 #define SE_status_exists (1 << 5)
 #define SE_createdDateTime_exists (1 << 6)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_TimeType_t createdDateTime;
   SE_HexBinary160_t endDeviceLFDI;
   SE_UInt8_t status;
@@ -2579,9 +2805,10 @@ typedef struct {
 
 // #define SE_status_exists (1 << 5)
 // #define SE_createdDateTime_exists (1 << 6)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_TimeType_t createdDateTime;
   SE_HexBinary160_t endDeviceLFDI;
   SE_UInt8_t status;
@@ -2589,18 +2816,20 @@ typedef struct {
 } SE_TextResponse_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_ResponseListLink_t;
 
 // #define SE_description_exists (1 << 0)
 // #define SE_version_exists (1 << 2)
 #define SE_ResponseListLink_exists (1 << 5)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_mRIDType_t mRID;
   SE_String32_t description;
   SE_VersionType_t version;
@@ -2608,18 +2837,20 @@ typedef struct {
 } SE_ResponseSet_t;
 
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   SE_UInt32_t pollRate;
   List *ResponseSet;
 } SE_ResponseSetList_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *Response;
@@ -2627,16 +2858,18 @@ typedef struct {
 
 // #define SE_status_exists (1 << 5)
 // #define SE_createdDateTime_exists (1 << 6)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_TimeType_t createdDateTime;
   SE_HexBinary160_t endDeviceLFDI;
   SE_UInt8_t status;
   SE_mRIDType_t subject;
 } SE_PriceResponse_t;
 
-typedef struct {
+typedef struct
+{
   SE_UnitType_t type;
   SE_UInt16_t value;
 } SE_AppliedTargetReduction_t;
@@ -2649,9 +2882,10 @@ typedef struct {
 // #define SE_Offset_exists (1 << 13)
 // #define SE_overrideDuration_exists (1 << 14)
 // #define SE_SetPoint_exists (1 << 15)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_TimeType_t createdDateTime;
   SE_HexBinary160_t endDeviceLFDI;
   SE_UInt8_t status;
@@ -2666,9 +2900,10 @@ typedef struct {
 
 // #define SE_status_exists (1 << 5)
 // #define SE_createdDateTime_exists (1 << 6)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_TimeType_t createdDateTime;
   SE_HexBinary160_t endDeviceLFDI;
   SE_UInt8_t status;
@@ -2677,62 +2912,69 @@ typedef struct {
 
 // #define SE_status_exists (1 << 5)
 // #define SE_createdDateTime_exists (1 << 6)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_TimeType_t createdDateTime;
   SE_HexBinary160_t endDeviceLFDI;
   SE_UInt8_t status;
   SE_mRIDType_t subject;
 } SE_DERControlResponse_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
-  char * subscribedResource;
+  char *href;
+  char *subscribedResource;
 } SE_SubscriptionBase_t;
 
 #define SE_Resource_exists (1 << 5)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
-  char * subscribedResource;
-  char * newResourceURI;
+  char *href;
+  char *subscribedResource;
+  char *newResourceURI;
   SE_Resource_t Resource;
   SE_UInt8_t status;
-  char * subscriptionURI;
+  char *subscriptionURI;
 } SE_Notification_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   List *Notification;
 } SE_NotificationList_t;
 
-typedef struct {
+typedef struct
+{
   SE_UInt8_t attributeIdentifier;
   SE_Int48_t lowerThreshold;
   SE_Int48_t upperThreshold;
 } SE_Condition_t;
 
 #define SE_Condition_exists (1 << 5)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
-  char * subscribedResource;
+  char *href;
+  char *subscribedResource;
   SE_Condition_t Condition;
   SE_UInt8_t encoding;
   SE_String16_t level;
   SE_UInt16_t limit;
-  char * notificationURI;
+  char *notificationURI;
 } SE_Subscription_t;
 
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
   SE_UInt8_t results;
   SE_UInt32_t pollRate;
@@ -2740,70 +2982,80 @@ typedef struct {
 } SE_SubscriptionList_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_UsagePointListLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_TimeLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_TariffProfileListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_ResponseSetListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_PrepaymentListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_MessagingProgramListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_FileListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_DERProgramListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_DemandResponseProgramListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_CustomerAccountListLink_t;
 
@@ -2818,9 +3070,10 @@ typedef struct {
 #define SE_DERProgramListLink_exists (1 << 11)
 #define SE_DemandResponseProgramListLink_exists (1 << 12)
 #define SE_CustomerAccountListLink_exists (1 << 13)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_CustomerAccountListLink_t CustomerAccountListLink;
   SE_DemandResponseProgramListLink_t DemandResponseProgramListLink;
   SE_DERProgramListLink_t DERProgramListLink;
@@ -2846,9 +3099,10 @@ typedef struct {
 // #define SE_DERProgramListLink_exists (1 << 11)
 // #define SE_DemandResponseProgramListLink_exists (1 << 12)
 // #define SE_CustomerAccountListLink_exists (1 << 13)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_CustomerAccountListLink_t CustomerAccountListLink;
   SE_DemandResponseProgramListLink_t DemandResponseProgramListLink;
   SE_DERProgramListLink_t DERProgramListLink;
@@ -2867,9 +3121,10 @@ typedef struct {
 
 // #define SE_subscribable_exists (1 << 1)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -2880,57 +3135,66 @@ typedef struct {
 typedef uint64_t SE_UInt40_t;
 typedef SE_UInt40_t SE_SFDIType_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_PowerStatusLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_LogEventListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_LoadShedAvailabilityListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_IPInterfaceListLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_FileStatusLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_DeviceStatusLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_DeviceInformationLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_DERListLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_ConfigurationLink_t;
 
 // #define SE_subscribable_exists (1 << 1)
@@ -2945,9 +3209,10 @@ typedef struct {
 #define SE_DeviceInformationLink_exists (1 << 12)
 #define SE_DERListLink_exists (1 << 13)
 #define SE_ConfigurationLink_exists (1 << 14)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_ConfigurationLink_t ConfigurationLink;
   SE_DERListLink_t DERListLink;
@@ -2976,9 +3241,10 @@ typedef struct {
 // #define SE_DERListLink_exists (1 << 13)
 // #define SE_ConfigurationLink_exists (1 << 14)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_ConfigurationLink_t ConfigurationLink;
   SE_DERListLink_t DERListLink;
@@ -2998,44 +3264,50 @@ typedef struct {
 typedef SE_UInt32_t SE_PINType_t;
 
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt32_t pollRate;
   SE_TimeType_t dateTimeRegistered;
   SE_PINType_t pIN;
 } SE_Registration_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_SubscriptionListLink_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_RegistrationLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_FunctionSetAssignmentsListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_FlowReservationResponseListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_FlowReservationRequestListLink_t;
 
@@ -3058,9 +3330,10 @@ typedef struct {
 #define SE_FlowReservationRequestListLink_exists (1 << 19)
 #define SE_enabled_true (1 << 20)
 #define SE_enabled_exists (1 << 21)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_ConfigurationLink_t ConfigurationLink;
   SE_DERListLink_t DERListLink;
@@ -3084,9 +3357,10 @@ typedef struct {
 
 // #define SE_subscribable_exists (1 << 1)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_SubscribableType_t subscribable;
   SE_UInt16_t all;
   SE_UInt8_t results;
@@ -3094,7 +3368,8 @@ typedef struct {
   List *EndDevice;
 } SE_EndDeviceList_t;
 
-typedef struct {
+typedef struct
+{
   SE_PowerOfTenMultiplierType_t multiplier;
   SE_UInt8_t subject;
   SE_Int16_t value;
@@ -3105,9 +3380,10 @@ typedef struct {
 #define SE_opState_exists (1 << 6)
 #define SE_onCount_exists (1 << 7)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt32_t pollRate;
   SE_TimeType_t changedTime;
   SE_UInt16_t onCount;
@@ -3117,22 +3393,25 @@ typedef struct {
   SE_TimeLink_t TimeLink;
 } SE_DeviceStatus_t;
 
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
 } SE_SelfDeviceLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_MirrorUsagePointListLink_t;
 
 // #define SE_all_exists (1 << 0)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_UInt16_t all;
 } SE_EndDeviceListLink_t;
 
@@ -3150,9 +3429,10 @@ typedef struct {
 #define SE_MirrorUsagePointListLink_exists (1 << 15)
 #define SE_EndDeviceListLink_exists (1 << 16)
 // #define SE_pollRate_exists (1 << 17)
-typedef struct {
+typedef struct
+{
   uint32_t _flags;
-  char * href;
+  char *href;
   SE_CustomerAccountListLink_t CustomerAccountListLink;
   SE_DemandResponseProgramListLink_t DemandResponseProgramListLink;
   SE_DERProgramListLink_t DERProgramListLink;
@@ -3490,4 +3770,3 @@ typedef struct {
 #define SE_WattHour 318
 #define SE_loWPAN 319
 #define SE_mRIDType 320
-

@@ -10,7 +10,7 @@
 #include <signal.h>
 #include <time.h>
 
-#define print_error(func) perror (func)
+#define print_error(func) perror(func)
 
 #include "../bsd.c"
 #include "../file.c"
@@ -18,13 +18,18 @@
 #ifndef HEADER_ONLY
 
 // control/status
-typedef struct _PollEvent {
+typedef struct _PollEvent
+{
   struct _PollEvent *next;
   char type, id;
-  unsigned end : 1; // end of input
+  unsigned end : 1;    // end of input
   unsigned status : 2; // connection status
   unsigned wait : 1;
-  union { int socket; int fd; };
+  union
+  {
+    int socket;
+    int fd;
+  };
 } PollEvent;
 
 #define MAX_EVENTS 10
@@ -33,27 +38,31 @@ typedef struct _PollEvent {
 int poll_fd;
 Timer *_tcp_timer;
 
-void platform_init () {
-  poll_fd = epoll_create (MAX_EVENTS);
-  _tcp_timer = add_timer (TCP_TIMEOUT);
-  signal (SIGPIPE, SIG_IGN);
+void platform_init()
+{
+  poll_fd = epoll_create(MAX_EVENTS);
+  _tcp_timer = add_timer(TCP_TIMEOUT);
+  signal(SIGPIPE, SIG_IGN);
 }
 
-void non_block_enable (int fd) {
-  fcntl (fd, F_SETFL, O_NONBLOCK);
+void non_block_enable(int fd)
+{
+  fcntl(fd, F_SETFL, O_NONBLOCK);
 }
 
-int event_done (void *any) {
-  PollEvent *pe = any; return pe->end;
+int event_done(void *any)
+{
+  PollEvent *pe = any;
+  return pe->end;
 }
 
-void event_add (int fd, void *data) {
+void event_add(int fd, void *data)
+{
   struct epoll_event ev;
-  non_block_enable (fd);
-  ev.events = EPOLLIN | EPOLLOUT
-    | EPOLLRDHUP | EPOLLHUP | EPOLLET;
+  non_block_enable(fd);
+  ev.events = EPOLLIN | EPOLLOUT | EPOLLRDHUP | EPOLLHUP | EPOLLET;
   ev.data.ptr = data;
-  epoll_ctl (poll_fd, EPOLL_CTL_ADD, fd, &ev);
+  epoll_ctl(poll_fd, EPOLL_CTL_ADD, fd, &ev);
 }
 
 Queue _active = {0};

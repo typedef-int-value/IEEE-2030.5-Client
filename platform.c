@@ -12,32 +12,32 @@
     This function should be called before any other plaform layer function to
     ensure that the platform is properly initialized.
 */
-void platform_init ();
+void platform_init();
 
 /** @brief Set the time zone.
 
     Set the time zone portably for the localtime function, ISO C leaves the
     time zone handling implementation defined.
 */
-void set_timezone (int tz_offset, int dst_offset,
-		   time_t dst_start, time_t dst_end);
+void set_timezone(int tz_offset, int dst_offset, time_t dst_start, time_t dst_end);
 
 /** @defgroup event Event
     @{
  */
 
-enum EventType {
-  EVENT_NONE, ///< Indicates no event.
-  SYSTEM_EVENT, //< A place holder for system events
-  UDP_PORT=16, ///< A UdpPort with data to be read.
-  TCP_PORT, ///< A TcpPort with data to be read.
-  TCP_CONNECT, ///< A newly connected TcpPort
-  TCP_ACCEPT, ///< A newly accepted TcpPort
-  TCP_CLOSED, ///< A TcpPort that was closed.
-  TCP_TIMEOUT, ///< A TcpPort that timed out
-  TIMER_EVENT, ///< A timer that expired.
-  POLL_TIMEOUT, ///< The event_poll function timed out waiting for an event.
-  EVENT_NEW=32 ///< A place holder for higher level events.
+enum EventType
+{
+  EVENT_NONE,    ///< Indicates no event.
+  SYSTEM_EVENT,  //< A place holder for system events
+  UDP_PORT = 16, ///< A UdpPort with data to be read.
+  TCP_PORT,      ///< A TcpPort with data to be read.
+  TCP_CONNECT,   ///< A newly connected TcpPort
+  TCP_ACCEPT,    ///< A newly accepted TcpPort
+  TCP_CLOSED,    ///< A TcpPort that was closed.
+  TCP_TIMEOUT,   ///< A TcpPort that timed out
+  TIMER_EVENT,   ///< A timer that expired.
+  POLL_TIMEOUT,  ///< The event_poll function timed out waiting for an event.
+  EVENT_NEW = 32 ///< A place holder for higher level events.
 };
 
 /** @brief Poll an event from the Platform layer.
@@ -49,7 +49,7 @@ enum EventType {
     an infitie timeout.
     @returns the @ref EventType and the associated object in the any parameter.
 */
-int event_poll (void **any, int timeout);
+int event_poll(void **any, int timeout);
 
 /** @} */
 
@@ -57,30 +57,35 @@ int event_poll (void **any, int timeout);
     @{
 */
 
-enum FileType {FILE_NONE, FILE_REGULAR, FILE_DIR};
+enum FileType
+{
+  FILE_NONE,
+  FILE_REGULAR,
+  FILE_DIR
+};
 
 /** @brief Read the entire contents of a file.
-    
+
     The buffer returned needs to be freed with @ref free.
     @param name is the name of the file to read
     @param length is a pointer to the returned length, can be NULL
     @returns a buffer with the contents of the file, also the length of the
-    file if the length parameter is not NULL 
+    file if the length parameter is not NULL
 */
-char *file_read (const char *name, int *length);
+char *file_read(const char *name, int *length);
 
 /** @brief Determine the file type given its name.
     @param name is the name of the file
     @returns the @ref FileType.
 */
-int file_type (const char *name);
+int file_type(const char *name);
 
-/** @brief Process a file line by line.    
+/** @brief Process a file line by line.
     @param name is the name of the file.
     @param func is a function that takes a line number and a buffer parameter
     that represents the contents of the line.
 */
-void process_file (const char *name, void (*func) (int n, char *));
+void process_file(const char *name, void (*func)(int n, char *));
 
 /** @brief Process all the files within a directory
     @param name is the name of the directory
@@ -88,12 +93,11 @@ void process_file (const char *name, void (*func) (int n, char *));
     @param func is a function that takes a file name parameter representing
     one of the files within a directory and an context.
 */
-void process_dir (const char *name, void *ctx,
-		  void (*func) (const char *, void *ctx));
+void process_dir(const char *name, void *ctx, void (*func)(const char *, void *ctx));
 
 /** @} */
 
-/** @defgroup timer Timer 
+/** @defgroup timer Timer
     @{
 */
 
@@ -104,9 +108,9 @@ typedef struct _ClockTime ClockTime;
     @param timer is a pointer to the Timer
     @param timeout is the timeout in seconds
  */
-void set_timer (Timer *timer, int timeout);
+void set_timer(Timer *timer, int timeout);
 
-void set_timer_ct (Timer *timer, ClockTime *ct);
+void set_timer_ct(Timer *timer, ClockTime *ct);
 
 /** @brief Create a new timer.
 
@@ -117,16 +121,16 @@ void set_timer_ct (Timer *timer, ClockTime *ct);
     e.g. add_timer (EVENT_NEW+1)
     @returns a new unarmed timer
 */
-Timer *add_timer (int type);
+Timer *add_timer(int type);
 
 /** @break Create a new timer, and set the timeout.
-    
+
     This is the equivalent of calling set_timer (add_timer (type), timeout).
     @param type is the event type to be returned by event_poll
     @param timeout is the timeout in seconds
     @returns the new armed timer
 */
-Timer *new_timer (int type, int timeout);
+Timer *new_timer(int type, int timeout);
 
 /** @} */
 
@@ -145,19 +149,19 @@ typedef struct _Address Address;
 /** @brief Allocate an Address.
     @returns a new Address
 */
-Address *address_new ();
+Address *address_new();
 
 /** @brief Contruct an IPv4 Address given the address number and port.
     @param ipv4 is an IPv4 address in host format
     @param port is the port to associated with the IPv4 address
 */
-Address *ipv4_address (Address *addr, uint32_t ipv4, int port);
+Address *ipv4_address(Address *addr, uint32_t ipv4, int port);
 
 /** @brief Contruct an IPv6 Address given the address number and port.
     @param ipv6 is a 16 byte (128 bit) IPv6 address
     @param port is the port to associated with the IPv6 address
 */
-Address *ipv6_address (Address *addr, const char *ipv6, int port);
+Address *ipv6_address(Address *addr, const char *ipv6, int port);
 
 /** @} */
 
@@ -166,10 +170,10 @@ Address *ipv6_address (Address *addr, const char *ipv6, int port);
 */
 
 /** @brief Select the network interface. */
-void net_select (int index);
-int interface_index (char *name);
-int interface_address (Address *host, char *name, int type);
-void print_interfaces (int ipv4);
+void net_select(int index);
+int interface_index(char *name);
+int interface_address(Address *host, char *name, int type);
+void print_interfaces(int ipv4);
 
 /** @} */
 
@@ -178,35 +182,37 @@ void print_interfaces (int ipv4);
 */
 
 /** @brief The status of a TcpPort */
-enum TcpStatus {Closed, /**< TcpPort is closed */
-		InProgress, /**< Connection initiated with @ref tcp_connect */
-		Connected /**< TcpPort is connected */
+enum TcpStatus
+{
+  Closed,     /**< TcpPort is closed */
+  InProgress, /**< Connection initiated with @ref tcp_connect */
+  Connected   /**< TcpPort is connected */
 };
 
 /** @brief A TcpPort represents a TCP communication channel. */
 typedef struct _TcpPort TcpPort;
 
-TcpPort *new_tcp_port ();
+TcpPort *new_tcp_port();
 
 /** @brief Return the Address of the connected TCP host.
     @param addr is a pointer to an Address
     @param port is a pointer to a TcpPort
     @returns the Address of connected TCP host.
 */
-Address *net_remote (Address *addr, void *port);
+Address *net_remote(Address *addr, void *port);
 
 /** @brief Return the local Address of the TcpPort.
     @param addr is a pointer to an Address
     @param port is a pointer to a TcpPort
     @returns the local Address of the TcpPort.
 */
-Address *net_local (Address *addr, void *port);
+Address *net_local(Address *addr, void *port);
 
 /** @brief Return the status of the TcpPort.
     @param port is a pointer to a TcpPort
     @returns the status of the TcpPort (@ref TcpStatus)
 */
-int net_status (void *port);
+int net_status(void *port);
 
 /** @brief An Acceptor represents a queue of clients waiting to
     establish a TCP connection on a specific address/port. */
@@ -217,7 +223,7 @@ typedef struct _Acceptor Acceptor;
     requests
     @returns an Acceptor ready to accept connections
 */
-Acceptor *net_listen (Address *address);
+Acceptor *net_listen(Address *address);
 
 /** @brief Accept a connection request and assign to a TcpPort.
 
@@ -226,14 +232,14 @@ Acceptor *net_listen (Address *address);
     @param port is a pointer to a TcpPort
     @param a is pointer to an Acceptor
 */
-void net_accept (void *port, Acceptor *a);
+void net_accept(void *port, Acceptor *a);
 
 /** @brief Establish a TCP connection with a host.
 
     @param port is a pointer to a TcpPort
     @param server is a pointer to an host Address
 */
-void net_connect (void *port, Address *server);
+void net_connect(void *port, Address *server);
 
 /** @brief Read data from a TcpPort.
     @param port is a pointer to a TcpPort
@@ -242,19 +248,19 @@ void net_connect (void *port, Address *server);
     @returns the length of the data read from the TcpPort or -1 to indicate
     that no data is available.
 */
-int net_read (void *port, char *buffer, int length);
+int net_read(void *port, char *buffer, int length);
 
 /** @brief Write data to a TcpPort.
     @param port is a pointer to a TcpPort
     @param buffer is a container for the data to write
     @param length is the length of the data to write
 */
-int net_write (void *port, const char *buffer, int length);
+int net_write(void *port, const char *buffer, int length);
 
 /** @brief Close a TCP connection.
     @param port is a pointer to a TcpPort
 */
-void net_close (void *port);
+void net_close(void *port);
 
 /** @} */
 
@@ -270,38 +276,38 @@ typedef struct _UdpPort UdpPort;
     @param p is a pointer to a UDP port.
     @param length is updated to indicate the length of the datagram.
     @returns a pointer to a buffer containing the datagram and the length of the
-    datagram or NULL if no datagram is available 
+    datagram or NULL if no datagram is available
 */
-char *net_receive (UdpPort *p, int *length);
+char *net_receive(UdpPort *p, int *length);
 
-/** @brief Send a UDP datagram to a host Address from a UdpPort. 
+/** @brief Send a UDP datagram to a host Address from a UdpPort.
     @param p is a pointer to a UdpPort
     @param data is a pointer to a buffer containing the datagram
     @param length is the length of the datagram
     @param address is a pointer to the Address of the host to receive the
     datagram
-    @returns the length of the datagram sent or -1 if 
+    @returns the length of the datagram sent or -1 if
 */
-int net_send (UdpPort *p, char *data, int length, Address *address);
+int net_send(UdpPort *p, char *data, int length, Address *address);
 
 /** @brief Allocate a new UdpPort.
     @param size is the size of the buffer to receive datagrams
     @returns a pointer to a UdpPort with buffer of the requested size
 */
-UdpPort *new_udp_port (int size);
+UdpPort *new_udp_port(int size);
 
 /** @brief Open a UdpPort.
     @param p is a pointer to a UdpPort
-    @param address is a pointer to an Address at which to receive datagrams 
+    @param address is a pointer to an Address at which to receive datagrams
 */
-void net_open (UdpPort *p, Address *address);
+void net_open(UdpPort *p, Address *address);
 
 /** @brief Join a multicast group (IPv6).
     @param p is a pointer to a UdpPort
     @param addr is an IPv6 multicast address
     @param loop selects whether to receive our own multicasts
 */
-void net_join_group (UdpPort *p, const char *addr, int loop);
+void net_join_group(UdpPort *p, const char *addr, int loop);
 
 /** @} */
 
@@ -316,4 +322,3 @@ void net_join_group (UdpPort *p, const char *addr, int loop);
 #include "linux/platform.c"
 
 #endif
-
