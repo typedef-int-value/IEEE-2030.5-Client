@@ -8,7 +8,7 @@
         "type": "cppdbg",
         "request": "launch",
         "program": "${workspaceFolder}/build/client_test",
-        "args": ["lo", "pti_dev.x509", "csep_root.pem"],
+        "args": ["eth0", "pti_dev.x509", "csep_root.pem" "https://127.0.0.1:9770/edev"],
         "stopAtEntry": false,
         "cwd": "${workspaceFolder}/build",
         "preLaunchTask": "build debug",
