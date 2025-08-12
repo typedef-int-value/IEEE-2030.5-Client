@@ -2,6 +2,7 @@
 // author: Mark Slicker <mark.slicker@gmail.com>
 
 #include "der_client.c"
+#define CSIP_ENABLE_TEST 1
 
 void dcap(Stub *r)
 {
@@ -70,6 +71,7 @@ int main(int argc, char **argv)
   if (argc < 2)
   {
     print_interfaces(0);
+    print_interfaces(1);
     exit(0);
   }
   if ((index = interface_index(argv[1])) < 0)
@@ -77,9 +79,15 @@ int main(int argc, char **argv)
     printf("interface %s not found\n", argv[1]);
     exit(0);
   }
-  client_init(argv[1], "pti_dev.x509");
   der_init();
-  load_cert_dir("certs");
+
+#if (CSIP_ENABLE_TEST == 1)
+  client_init(argv[1], "pti_dev.x509"); // der format
+  load_cert_dir("certs");              // pem format
+#else
+  client_init(argv[1], NULL);
+#endif
+  client_init(argv[1], NULL);
   discover_device();
   while (1)
   {
