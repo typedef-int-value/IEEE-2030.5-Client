@@ -1,0 +1,15 @@
+SET(CMAKE_SYSROOT /opt/st/stm32mp2/4.2.4-openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/sysroots/cortexa35-ostl-linux/)
+
+set(tools /opt/st/stm32mp2/4.2.4-openstlinux-6.1-yocto-mickledore-mpu-v24.06.26/sysroots/x86_64-ostl_sdk-linux/usr/bin/aarch64-ostl-linux)
+SET(CMAKE_C_COMPILER ${tools}/aarch64-ostl-linux-gcc)
+SET(CMAKE_CXX_COMPILER ${tools}/aarch64-ostl-linux-g++)
+SET(CMAKE_LINKER ${tools}/aarch64-ostl-linux-ld)
+SET(CMAKE_NM ${tools}/aarch64-ostl-linux-nm)
+SET(CMAKE_OBJCOPY ${tools}/aarch64-ostl-linux-objcopy)
+SET(CMAKE_OBJDUMP ${tools}/aarch64-ostl-linux-objdump)
+SET(CMAKE_RANLIB ${tools}/aarch64-ostl-linux-ranlib)
+
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
+set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
+set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)

@@ -82,16 +82,17 @@ int main(int argc, char **argv)
   der_init();
 
 #if (CSIP_ENABLE_TEST == 1)
-  client_init(argv[1], "pti_dev.x509"); // der format
-  load_cert_dir("certs");              // pem format
+  client_init(argv[1], "./test_certs/testdevice.crt", "./test_certs/testdevicedec.key"); // der format
+  load_cert_dir("./test_certs");              // pem format
 #else
-  client_init(argv[1], NULL);
+  client_init(argv[1], NULL, NULL);
 #endif
-  client_init(argv[1], NULL);
   discover_device();
+
   while (1)
   {
-    switch (der_poll(&any, -1))
+    int event = der_poll(&any, -1);
+    switch (event)
     {
       case SERVICE_FOUND:
         s = any;
@@ -110,6 +111,9 @@ int main(int argc, char **argv)
         break;
       case EVENT_END:
         print_event_end(any);
+        break;
+      default:
+        printf("event is %d\n", event);
         break;
     }
   }

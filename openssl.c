@@ -23,7 +23,7 @@ typedef int (*VerifyFunc)(void *context, uint8_t *cert, int length);
     can be NULL to indicate not to take this step.
     @returns the path of the device certificate 'path'.x509
 */
-void tls_init(const char *path, VerifyFunc verify);
+void tls_init(const char *path, const char* private, VerifyFunc verify);
 
 /** @brief Load a CA certificate.
 
@@ -200,10 +200,10 @@ void load_cert_dir(const char *path)
 
 int _tls_initialized = 0;
 
-void tls_init(const char *path, VerifyFunc verify)
+void tls_init(const char *path, const char* private, VerifyFunc verify)
 {
   int ret, type;
-  char *private = strdup(path), *ext;
+  char *ext;
   if ((ssl_ctx = SSL_CTX_new(TLS_method())) == NULL)
   {
     print_ssl_error("tls_init");
@@ -217,14 +217,8 @@ void tls_init(const char *path, VerifyFunc verify)
     printf("tls_init: error selecting %s cipher list\n", CIPHER_LIST);
     exit(0);
   }
-  if (ext = strstr(private, ".x509"))
-  {
-    strcpy(ext, ".pem");
-    type = SSL_FILETYPE_ASN1;
-  }
-  else
-    type = SSL_FILETYPE_PEM;
-  if (SSL_CTX_use_certificate_file(ssl_ctx, path, type) != 1)
+
+  if (SSL_CTX_use_certificate_file(ssl_ctx, path, SSL_FILETYPE_PEM) != 1)
   {
     printf("tls_init: error opening certificate file: %s\n", path);
     exit(0);
@@ -234,7 +228,6 @@ void tls_init(const char *path, VerifyFunc verify)
     printf("tls_init: error (%d) opening private key file: %s\n", ret, private);
     exit(0);
   }
-  free(private);
   _tls_initialized = 1;
 }
 

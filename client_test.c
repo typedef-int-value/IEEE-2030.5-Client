@@ -16,9 +16,10 @@ void version()
 
 void usage()
 {
-  printf("usage: client_test interface [device_cert ca_certs..]\n"
+  printf("usage: client_test interface [device_cert device_key ca_certs..]\n"
          "                   <subtype[:1][/path] | URI> [commands] \n\n");
   print_interfaces(0);
+  print_interfaces(1);
   exit(0);
 }
 
@@ -70,7 +71,7 @@ int subtype_query(char *arg, char *name)
   if (server = se_subquery(subtype))
   {
     if (!secure)
-      client_init(name, NULL);
+      client_init(name, NULL, NULL);
     se_discover(server, qu);
     path = q;
     return 1;
@@ -143,10 +144,11 @@ void options(int argc, char **argv)
     }
     else if (!secure)
     {
-      client_init(name, argv[i]);
+      client_init(name, argv[i], argv[i+1]);
       secure = 1;
       d = get_device(device_sfdi);
       memcpy(d->lfdi, device_lfdi, 20);
+      i++;
     }
     else if (!cert_name(argv[i]))
     {

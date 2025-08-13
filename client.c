@@ -25,7 +25,7 @@ int client_poll(void **any, int timeout);
     @param cert is the path/name of device used to load the device certificate
     and private key pair.
 */
-void client_init(char *name, const char *cert);
+void client_init(char *name, const char *cert, const char* key);
 
 /** @} */
 
@@ -52,11 +52,11 @@ top:
   return event;
 }
 
-void client_init(char *name, const char *cert)
+void client_init(char *name, const char *cert, const char* key)
 {
   if (cert)
   {
-    tls_init(cert, 0);
+    tls_init(cert, key, 0);
     security_init(cert);
   }
   discover_init(name);
