@@ -1,8 +1,8 @@
 // Copyright (c) 2018 Electric Power Research Institute, Inc.
 // author: Mark Slicker <mark.slicker@gmail.com>
 
-#define CIPHER_LIST "ECDHE-ECDSA-AES128-CCM8"
-
+//#define CIPHER_LIST "ECDHE-ECDSA-AES128-CCM8"
+#define CIPHER_LIST "ECDHE-RSA-AES128-SHA256"
 /** @addtogroup security
     @{
 */
@@ -211,7 +211,8 @@ void tls_init(const char *path, const char* private, VerifyFunc verify)
   }
   init_bio();
   _verify_peer = verify;
-  SSL_CTX_set_verify(ssl_ctx, SSL_VERIFY_PEER | SSL_VERIFY_FAIL_IF_NO_PEER_CERT, verify_peer);
+  //SSL_CTX_set_verify(ssl_ctx, SSL_VERIFY_PEER | SSL_VERIFY_FAIL_IF_NO_PEER_CERT, verify_peer);
+  SSL_CTX_set_verify(ssl_ctx, SSL_VERIFY_NONE, NULL);
   if (!SSL_CTX_set_cipher_list(ssl_ctx, CIPHER_LIST))
   {
     printf("tls_init: error selecting %s cipher list\n", CIPHER_LIST);
