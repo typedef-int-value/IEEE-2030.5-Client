@@ -7,6 +7,7 @@
 #include "query.c"
 
 #define VERSION "0.2.11"
+#define SETTING_PATH "../settings"
 
 void version()
 {
@@ -192,7 +193,7 @@ void options(int argc, char **argv)
         break;
       case 3: // register
         test |= GET_EDEV | REGISTER_TEST | PUT_SETTINGS;
-        device_settings(device_sfdi, "settings");
+        device_settings(device_sfdi, SETTING_PATH);
         break;
       case 4: // pin
         test |= PUT_PIN;
@@ -206,7 +207,7 @@ void options(int argc, char **argv)
         primary = 1;
       case 6: // all
         test |= GET_ALL | REGISTER_TEST | SCHEDULE_TEST | PUT_SETTINGS;
-        device_settings(device_sfdi, "settings");
+        device_settings(device_sfdi, SETTING_PATH);
         break;
       case 7: // time
         test |= GET_TIME;
@@ -219,7 +220,7 @@ void options(int argc, char **argv)
         break;
       case 10: // metering
         test |= GET_ALL | REGISTER_TEST | INCLUDE_READINGS | PUT_SETTINGS;
-        device_settings(device_sfdi, "settings");
+        device_settings(device_sfdi, SETTING_PATH);
       case 11: // meter
         test |= GET_EDEV | METER_TEST;
         break;
